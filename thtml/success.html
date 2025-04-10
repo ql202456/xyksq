@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    *{
+      color: #032057;
+    }
+    .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+      border-top:none
+    }
+  </style>
+  <title>信用卡预申请</title>
+</head>
+
+<body
+  style="background-image: url(./img/02.jpg);background-repeat: no-repeat;background-position:center top; background-size: 100% 100%;">
+
+  <div class="container">
+    <div class="row" style="margin-top: 20%;"></div>
+    <div class="row">
+      <div class="col-md-12 text-center" style="font-size: 20px;">
+        初审通过
+        <div id="ed" style="font-size: 45px;color: rgb(247, 29, 29)"></div>
+      </div>
+      <div class="col-md-12 text-center" style="margin-top: 25px;">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>申请人姓名</td>
+              <td id="xm"></td>
+            </tr>
+            <tr>
+              <td>身份证号</td>
+              <td id="sfzh"></td>
+            </tr>
+            <tr>
+              <td>手机号码</td>
+              <td id="sjhm"></td>
+            </tr>
+            <!-- <tr>
+                        <td>办理银行卡额度</td>
+                        <td id="blyxked"></td>
+                      </tr> -->
+            <!-- <tr>
+              <td>初审额度</td>
+              <td ></td>
+            </tr> -->
+            <tr>
+              <td>办理银行</td>
+              <td id="blyh"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row" style="margin: 0 10px;">
+      <div id="xm1" class="col-md-12 text-center">
+        申请人：
+      </div>
+      <div id="sj" class="col-md-12 text-center">
+        申请时间：
+      </div>
+      <div id="msg" class="col-md-12 text-center">
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  const paramsStr = window.location.search
+  const params = new URLSearchParams(paramsStr)
+  // list
+  $("#xm").text(unescape(params.get('xm')))
+  $("#xm1").append(unescape(params.get('xm')))
+  $("#sfzh").text(unescape(params.get('sfzh')))
+  $("#sjhm").text(unescape(params.get('sjhm')))
+  $("#blyhked").text(unescape(params.get('blyhked')))
+  $("#blyh").text(unescape(params.get('blyh')))
+  $("#ed").text(parseInt(unescape(params.get('blyhked'))) + parseInt(unescape(params.get('blyhked'))) * 0.2 + '')
+  $("#ed").text(parseInt(unescape(params.get('blyhked'))) + parseInt(unescape(params.get('blyhked'))) * 0.2 + '')
+
+
+  function formatDate(date) {
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    return `${year}-${month}-${day}`;
+  }
+
+  const date = new Date();
+  const formattedDate = formatDate(date);
+  $("#sj").append(formattedDate)
+  $("#msg").append(unescape(params.get('blyh')) + "初审额度为:"+(parseInt(unescape(params.get('blyhked'))) + parseInt(unescape(params.get('blyhked'))) * 0.2) + ''+"，请注意接听我行工作人员电话")
+  
+  // console.log(formattedDate); // 输出类似 '2021-05-14 16:30:00' 的字符串
+
+
+
+
+
+</script>
+
+</html>
